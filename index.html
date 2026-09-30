@@ -12,7 +12,6 @@
   <!-- ── Header ─────────────────────────────────────────── -->
   <header class="site-header">
     <div class="header-inner">
-      <!-- Option A: Clear, professional heading -->
       <h1>Student Task Management System</h1>
       <p class="header-sub">Track, manage and complete your academic tasks</p>
     </div>
@@ -21,7 +20,6 @@
   <main class="container">
 
     <!-- ── Add Task Form ──────────────────────────────────── -->
-    <!-- Option C: Improved form layout with clear section label -->
     <section class="card form-card" aria-labelledby="form-heading">
       <h2 id="form-heading">Add New Task</h2>
 
@@ -63,7 +61,6 @@
     </section>
 
     <!-- ── Task List ──────────────────────────────────────── -->
-    <!-- Option A: Section renamed to "Current Student Tasks" -->
     <section class="card list-card" aria-labelledby="list-heading">
       <h2 id="list-heading">
         Current Student Tasks
@@ -72,12 +69,11 @@
 
       <ul id="task-list" class="task-list">
 
-        <!-- Option B: Richer, better-organised task cards -->
+        <!-- Task 1 -->
         <li class="task-item" data-id="1">
           <div class="task-body">
             <div class="task-header">
               <h3 class="task-title">Complete Git Assignment — Parts 1 &amp; 2</h3>
-              <span class="task-status status-pending">Pending</span>
             </div>
             <p class="task-desc">
               Set up the local Git repository, create the required project files, make
@@ -85,18 +81,25 @@
               <code>feature/task-status</code> branch, then push to GitHub and open a
               pull request for the priority feature.
             </p>
+            <div class="task-status-row">
+              <span class="status-label">Status:</span>
+              <span class="task-status status-pending">Pending</span>
+            </div>
             <div class="task-meta-row">
               <span class="meta-item"><strong>Subject:</strong> DevOps Practical</span>
               <span class="meta-item"><strong>Due:</strong> 4 Oct 2026</span>
+              <button class="btn btn-mark-done toggle-status-btn" data-task-id="1">
+                Mark Completed
+              </button>
             </div>
           </div>
         </li>
 
+        <!-- Task 2 -->
         <li class="task-item" data-id="2">
           <div class="task-body">
             <div class="task-header">
               <h3 class="task-title">Read DevOps Textbook — Chapter 3</h3>
-              <span class="task-status status-pending">Pending</span>
             </div>
             <p class="task-desc">
               Study the chapter on continuous integration pipelines. Take structured
@@ -104,18 +107,25 @@
               Actions) and the differences between continuous delivery and continuous
               deployment. Notes will be used in the upcoming written quiz.
             </p>
+            <div class="task-status-row">
+              <span class="status-label">Status:</span>
+              <span class="task-status status-pending">Pending</span>
+            </div>
             <div class="task-meta-row">
               <span class="meta-item"><strong>Subject:</strong> DevOps Theory</span>
               <span class="meta-item"><strong>Due:</strong> 7 Oct 2026</span>
+              <button class="btn btn-mark-done toggle-status-btn" data-task-id="2">
+                Mark Completed
+              </button>
             </div>
           </div>
         </li>
 
+        <!-- Task 3 -->
         <li class="task-item" data-id="3">
           <div class="task-body">
             <div class="task-header">
               <h3 class="task-title">Submit Database Normalisation Lab</h3>
-              <span class="task-status status-pending">Pending</span>
             </div>
             <p class="task-desc">
               Finalise SQL queries for the third-normal-form (3NF) normalisation
@@ -123,9 +133,16 @@
               in the lab environment, export the results as a PDF and upload the
               completed report to the LMS submission portal before the deadline.
             </p>
+            <div class="task-status-row">
+              <span class="status-label">Status:</span>
+              <span class="task-status status-pending">Pending</span>
+            </div>
             <div class="task-meta-row">
               <span class="meta-item"><strong>Subject:</strong> Database Systems</span>
               <span class="meta-item"><strong>Due:</strong> 5 Oct 2026</span>
+              <button class="btn btn-mark-done toggle-status-btn" data-task-id="3">
+                Mark Completed
+              </button>
             </div>
           </div>
         </li>

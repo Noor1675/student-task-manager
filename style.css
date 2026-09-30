@@ -286,12 +286,8 @@ body {
 
 .task-body { width: 100%; }
 
-/* Option B: Task header — title + status on the same row */
+/* Task header — title only (status moved to status-row below) */
 .task-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--space-sm);
   margin-bottom: var(--space-xs);
 }
 
@@ -303,12 +299,37 @@ body {
   flex: 1;
 }
 
-/* Option B: Description — slightly larger with breathing room */
+/* Description */
 .task-desc {
   font-size: 0.855rem;
   color: var(--clr-muted);
   line-height: 1.65;
   margin-bottom: var(--space-sm);
+}
+
+/* ── Status Row: "Status: Pending / Completed" ── */
+.task-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: var(--space-sm);
+}
+
+.status-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-text-sec);
+}
+
+/* ── Completed task — subtle visual dim ── */
+.task-item.task-completed {
+  border-left-color: var(--status-completed-dot, #16a34a);
+  opacity: 0.82;
+}
+
+.task-item.task-completed .task-title {
+  text-decoration: line-through;
+  color: var(--clr-muted);
 }
 
 .task-desc code {
@@ -321,13 +342,57 @@ body {
   border: 1px solid var(--clr-border-lt);
 }
 
-/* Option B: Meta row — subject and due date */
+/* Meta row — subject, due date AND action button */
 .task-meta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-md);
+  align-items: center;
+  gap: var(--space-sm);
   padding-top: var(--space-xs);
   border-top: 1px solid var(--clr-border-lt);
+}
+
+/* Push button to the far right */
+.task-meta-row .toggle-status-btn {
+  margin-left: auto;
+}
+
+/* Mark Completed button — green outline */
+.btn-mark-done {
+  background: transparent;
+  color: #15803d;
+  border: 1.5px solid #16a34a;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.btn-mark-done:hover {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+/* Mark Pending button — amber outline */
+.btn-mark-pending {
+  background: transparent;
+  color: #92400e;
+  border: 1.5px solid #d97706;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.btn-mark-pending:hover {
+  background: #d97706;
+  color: #ffffff;
 }
 
 .meta-item {
