@@ -53,13 +53,17 @@ function createTaskElement(id, title, description) {
   li.className = 'task-item';
   li.dataset.id = id;
 
+  // Uses the same card structure as the pre-loaded tasks (Option B layout)
   li.innerHTML = `
     <div class="task-body">
-      <h3 class="task-title">${escapeHtml(title)}</h3>
+      <div class="task-header">
+        <h3 class="task-title">${escapeHtml(title)}</h3>
+        <span class="task-status status-pending">Pending</span>
+      </div>
       <p class="task-desc">${escapeHtml(description)}</p>
-    </div>
-    <div class="task-meta">
-      <span class="task-status status-pending">Pending</span>
+      <div class="task-meta-row">
+        <span class="meta-item"><strong>Added:</strong> ${new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+      </div>
     </div>
   `;
 

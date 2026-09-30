@@ -9,79 +9,124 @@
 </head>
 <body>
 
+  <!-- ── Header ─────────────────────────────────────────── -->
   <header class="site-header">
     <div class="header-inner">
+      <!-- Option A: Clear, professional heading -->
       <h1>Student Task Management System</h1>
-      <p class="header-sub">Organise your academic work efficiently</p>
+      <p class="header-sub">Track, manage and complete your academic tasks</p>
     </div>
   </header>
 
   <main class="container">
 
-    <!-- Add Task Form -->
+    <!-- ── Add Task Form ──────────────────────────────────── -->
+    <!-- Option C: Improved form layout with clear section label -->
     <section class="card form-card" aria-labelledby="form-heading">
       <h2 id="form-heading">Add New Task</h2>
+
       <form id="task-form" novalidate>
-        <div class="form-group">
-          <label for="task-title">Task Title <span class="required">*</span></label>
-          <input
-            type="text"
-            id="task-title"
-            name="task-title"
-            placeholder="e.g. Submit Lab Report"
-            autocomplete="off"
-            required
-          />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-title">Task Title <span class="required">*</span></label>
+            <input
+              type="text"
+              id="task-title"
+              name="task-title"
+              placeholder="e.g. Submit Lab Report"
+              autocomplete="off"
+              required
+            />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="task-desc">Description <span class="required">*</span></label>
-          <textarea
-            id="task-desc"
-            name="task-desc"
-            placeholder="Brief description of the task..."
-            rows="3"
-            required
-          ></textarea>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-desc">Description <span class="required">*</span></label>
+            <textarea
+              id="task-desc"
+              name="task-desc"
+              placeholder="What needs to be done? Include any important details..."
+              rows="3"
+              required
+            ></textarea>
+          </div>
         </div>
-        <button type="submit" id="add-task-btn" class="btn btn-primary">
-          + Add Task
-        </button>
-        <p id="form-error" class="error-msg" role="alert" aria-live="polite"></p>
+
+        <div class="form-footer">
+          <button type="submit" id="add-task-btn" class="btn btn-primary">+ Add Task</button>
+          <p id="form-error" class="error-msg" role="alert" aria-live="polite"></p>
+        </div>
+
       </form>
     </section>
 
-    <!-- Task List -->
+    <!-- ── Task List ──────────────────────────────────────── -->
+    <!-- Option A: Section renamed to "Current Student Tasks" -->
     <section class="card list-card" aria-labelledby="list-heading">
-      <h2 id="list-heading">My Tasks <span id="task-count" class="badge">3</span></h2>
+      <h2 id="list-heading">
+        Current Student Tasks
+        <span id="task-count" class="badge">3</span>
+      </h2>
+
       <ul id="task-list" class="task-list">
 
+        <!-- Option B: Richer, better-organised task cards -->
         <li class="task-item" data-id="1">
           <div class="task-body">
-            <h3 class="task-title">Complete Git Assignment</h3>
-            <p class="task-desc">Set up the local Git repository, create all required commits and branches, then prepare the PDF report.</p>
-          </div>
-          <div class="task-meta">
-            <span class="task-status status-pending">Pending</span>
+            <div class="task-header">
+              <h3 class="task-title">Complete Git Assignment — Parts 1 &amp; 2</h3>
+              <span class="task-status status-pending">Pending</span>
+            </div>
+            <p class="task-desc">
+              Set up the local Git repository, create the required project files, make
+              at least three meaningful commits, create and merge the
+              <code>feature/task-status</code> branch, then push to GitHub and open a
+              pull request for the priority feature.
+            </p>
+            <div class="task-meta-row">
+              <span class="meta-item"><strong>Subject:</strong> DevOps Practical</span>
+              <span class="meta-item"><strong>Due:</strong> 4 Oct 2026</span>
+            </div>
           </div>
         </li>
 
         <li class="task-item" data-id="2">
           <div class="task-body">
-            <h3 class="task-title">Read DevOps Chapter 3</h3>
-            <p class="task-desc">Study the chapter on continuous integration and make revision notes for the upcoming quiz.</p>
-          </div>
-          <div class="task-meta">
-            <span class="task-status status-pending">Pending</span>
+            <div class="task-header">
+              <h3 class="task-title">Read DevOps Textbook — Chapter 3</h3>
+              <span class="task-status status-pending">Pending</span>
+            </div>
+            <p class="task-desc">
+              Study the chapter on continuous integration pipelines. Take structured
+              revision notes covering key CI concepts, common tools (Jenkins, GitHub
+              Actions) and the differences between continuous delivery and continuous
+              deployment. Notes will be used in the upcoming written quiz.
+            </p>
+            <div class="task-meta-row">
+              <span class="meta-item"><strong>Subject:</strong> DevOps Theory</span>
+              <span class="meta-item"><strong>Due:</strong> 7 Oct 2026</span>
+            </div>
           </div>
         </li>
 
         <li class="task-item" data-id="3">
           <div class="task-body">
-            <h3 class="task-title">Submit Database Lab</h3>
-            <p class="task-desc">Finalise the SQL queries for the normalisation exercise and upload to the LMS before Friday.</p>
-          </div>
-          <div class="task-meta">
-            <span class="task-status status-pending">Pending</span>
+            <div class="task-header">
+              <h3 class="task-title">Submit Database Normalisation Lab</h3>
+              <span class="task-status status-pending">Pending</span>
+            </div>
+            <p class="task-desc">
+              Finalise SQL queries for the third-normal-form (3NF) normalisation
+              exercise. Verify all functional dependencies are resolved, test each query
+              in the lab environment, export the results as a PDF and upload the
+              completed report to the LMS submission portal before the deadline.
+            </p>
+            <div class="task-meta-row">
+              <span class="meta-item"><strong>Subject:</strong> Database Systems</span>
+              <span class="meta-item"><strong>Due:</strong> 5 Oct 2026</span>
+            </div>
           </div>
         </li>
 
@@ -91,7 +136,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>Student Task Management System &copy; 2026 &mdash; DevOps Project</p>
+    <p>Student Task Management System &mdash; DevOps Project &copy; 2026</p>
   </footer>
 
   <script src="script.js"></script>
