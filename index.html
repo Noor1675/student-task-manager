@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Student Task Management System – manage, track and organise your academic tasks easily." />
+  <title>Student Task Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>Student Task Management System</h1>
+      <p class="header-sub">Organise your academic work efficiently</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Add Task Form -->
+    <section class="card form-card" aria-labelledby="form-heading">
+      <h2 id="form-heading">Add New Task</h2>
+      <form id="task-form" novalidate>
+        <div class="form-group">
+          <label for="task-title">Task Title <span class="required">*</span></label>
+          <input
+            type="text"
+            id="task-title"
+            name="task-title"
+            placeholder="e.g. Submit Lab Report"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="task-desc">Description <span class="required">*</span></label>
+          <textarea
+            id="task-desc"
+            name="task-desc"
+            placeholder="Brief description of the task..."
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" id="add-task-btn" class="btn btn-primary">
+          + Add Task
+        </button>
+        <p id="form-error" class="error-msg" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Task List -->
+    <section class="card list-card" aria-labelledby="list-heading">
+      <h2 id="list-heading">My Tasks <span id="task-count" class="badge">3</span></h2>
+      <ul id="task-list" class="task-list">
+
+        <li class="task-item" data-id="1">
+          <div class="task-body">
+            <h3 class="task-title">Complete Git Assignment</h3>
+            <p class="task-desc">Set up the local Git repository, create all required commits and branches, then prepare the PDF report.</p>
+          </div>
+          <div class="task-meta">
+            <span class="task-status status-pending">Pending</span>
+          </div>
+        </li>
+
+        <li class="task-item" data-id="2">
+          <div class="task-body">
+            <h3 class="task-title">Read DevOps Chapter 3</h3>
+            <p class="task-desc">Study the chapter on continuous integration and make revision notes for the upcoming quiz.</p>
+          </div>
+          <div class="task-meta">
+            <span class="task-status status-pending">Pending</span>
+          </div>
+        </li>
+
+        <li class="task-item" data-id="3">
+          <div class="task-body">
+            <h3 class="task-title">Submit Database Lab</h3>
+            <p class="task-desc">Finalise the SQL queries for the normalisation exercise and upload to the LMS before Friday.</p>
+          </div>
+          <div class="task-meta">
+            <span class="task-status status-pending">Pending</span>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Student Task Management System &copy; 2026 &mdash; DevOps Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

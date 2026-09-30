@@ -1,0 +1,310 @@
+/* ================================================
+   Student Task Management System — style.css
+   ================================================ */
+
+/* ---------- Google Font ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  --clr-bg:        #f1f5f9;
+  --clr-surface:   #ffffff;
+  --clr-border:    #cbd5e1;
+  --clr-border-lt: #e2e8f0;
+
+  --clr-primary:   #1d4ed8;
+  --clr-primary-h: #1e40af;
+  --clr-primary-lt:#eff6ff;
+
+  --clr-danger:    #dc2626;
+  --clr-danger-lt: #fef2f2;
+
+  --clr-text:      #0f172a;
+  --clr-text-sec:  #334155;
+  --clr-muted:     #64748b;
+
+  --status-pending-bg:    #fef3c7;
+  --status-pending-text:  #92400e;
+  --status-pending-dot:   #d97706;
+
+  --status-completed-bg:   #dcfce7;
+  --status-completed-text: #14532d;
+  --status-completed-dot:  #16a34a;
+
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --transition: 0.18s ease;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background-color: #1e3a8a;
+  border-bottom: 3px solid #1d4ed8;
+  padding: 1.75rem 1rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.header-sub {
+  color: #bfdbfe;
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+  font-weight: 400;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--clr-border-lt);
+}
+
+/* ---------- Form ---------- */
+.form-group {
+  margin-bottom: 0.9rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--clr-text-sec);
+  margin-bottom: 0.35rem;
+}
+
+.required { color: var(--clr-danger); }
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  color: var(--clr-text);
+  font-family: inherit;
+  font-size: 0.92rem;
+  padding: 0.55rem 0.8rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px rgba(29,78,216,0.12);
+}
+
+.form-group textarea { min-height: 75px; }
+
+/* ---------- Button ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.58rem 1.25rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.btn-primary {
+  background: var(--clr-primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--clr-primary-h);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ---------- Error Message ---------- */
+.error-msg {
+  font-size: 0.83rem;
+  color: var(--clr-danger);
+  background: var(--clr-danger-lt);
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.7rem;
+  margin-top: 0.6rem;
+  min-height: 0;
+  display: none;
+}
+
+.error-msg:not(:empty) {
+  display: block;
+}
+
+/* ---------- Badge ---------- */
+.badge {
+  background: var(--clr-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+}
+
+/* ---------- Task List ---------- */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ---------- Task Item ---------- */
+.task-item {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border-lt);
+  border-left: 3px solid var(--clr-primary);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  animation: slideIn 0.25s ease;
+}
+
+.task-item:hover {
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--clr-primary-h);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.task-body { flex: 1; }
+
+.task-body .task-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  margin-bottom: 0.25rem;
+}
+
+.task-body .task-desc {
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+  line-height: 1.5;
+}
+
+.task-meta {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ---------- Status Badge ---------- */
+.task-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.status-pending {
+  background: var(--status-pending-bg);
+  color: var(--status-pending-text);
+}
+
+.status-completed {
+  background: var(--status-completed-bg);
+  color: var(--status-completed-text);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 1.1rem;
+  font-size: 0.8rem;
+  color: var(--clr-muted);
+  border-top: 1px solid var(--clr-border);
+  background: var(--clr-surface);
+  margin-top: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 520px) {
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .task-meta { margin-top: 0.4rem; }
+  .card { padding: 1.1rem; }
+}

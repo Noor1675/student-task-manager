@@ -1,0 +1,93 @@
+# ============================================================
+# .gitignore — Student Task Management System
+# ============================================================
+
+# ── Operating System Files ───────────────────────────────────
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encdata
+Desktop.ini
+$RECYCLE.BIN/
+ehthumbs.db
+ehthumbs_vista.db
+
+# Linux
+*~
+
+# ── Editor / IDE Settings ────────────────────────────────────
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim / Neovim
+*.swp
+*.swo
+Session.vim
+
+# Emacs
+*#
+.#*
+
+# ── Log Files ────────────────────────────────────────────────
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Node / npm (if added later) ──────────────────────────────
+node_modules/
+package-lock.json
+yarn.lock
+.npm
+
+# ── Maven Build Output ───────────────────────────────────────
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ── Java Class Files ─────────────────────────────────────────
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# ── Environment & Secrets ────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.pfx
+
+# ── Temporary / Generated Files ──────────────────────────────
+*.tmp
+*.bak
+*.orig
+*.cache
+dist/
+build/
+out/
