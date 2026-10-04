@@ -153,7 +153,8 @@ body {
 .required { color: var(--clr-danger); }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   width: 100%;
   background: #f8fafc;
   border: 1px solid var(--clr-border);
@@ -171,13 +172,30 @@ body {
 .form-group textarea::placeholder { color: #94a3b8; }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
   background: #ffffff;
   border-color: var(--clr-primary);
   box-shadow: 0 0 0 3px rgba(29,78,216,0.1);
 }
 
 .form-group textarea { min-height: 85px; }
+
+/* ── Priority Badge ────────────────────────────────────── */
+.priority-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.priority-high   { background: #fee2e2; color: #991b1b; }
+.priority-medium { background: #fef3c7; color: #78350f; }
+.priority-low    { background: #dcfce7; color: #14532d; }
 
 /* Option C: form footer — button and error on the same row area */
 .form-footer {

@@ -9,12 +9,13 @@
 'use strict';
 
 /* ── DOM References ─────────────────────────────────────── */
-const form       = document.getElementById('task-form');
-const titleInput = document.getElementById('task-title');
-const descInput  = document.getElementById('task-desc');
-const taskList   = document.getElementById('task-list');
-const taskCount  = document.getElementById('task-count');
-const formError  = document.getElementById('form-error');
+const form          = document.getElementById('task-form');
+const titleInput    = document.getElementById('task-title');
+const descInput     = document.getElementById('task-desc');
+const priorityInput = document.getElementById('task-priority');
+const taskList      = document.getElementById('task-list');
+const taskCount     = document.getElementById('task-count');
+const formError     = document.getElementById('form-error');
 
 /* ── Task ID Counter ────────────────────────────────────── */
 let nextId = 4; // IDs 1-3 used by pre-existing HTML tasks
@@ -102,9 +103,10 @@ taskList.addEventListener('click', function (event) {
  * @param {number} id
  * @param {string} title
  * @param {string} description
+ * @param {string} priority - 'high' | 'medium' | 'low'
  * @returns {HTMLLIElement}
  */
-function createTaskElement(id, title, description) {
+function createTaskElement(id, title, description, priority) {
   const li = document.createElement('li');
   li.className = 'task-item';
   li.dataset.id = id;
@@ -112,6 +114,8 @@ function createTaskElement(id, title, description) {
   const today = new Date().toLocaleDateString('en-GB', {
     day: 'numeric', month: 'short', year: 'numeric'
   });
+
+  const priorityLabel = priority.charAt(0).toUpperCase() + priority.slice(1);
 
   li.innerHTML = `
     <div class="task-body">
@@ -122,6 +126,7 @@ function createTaskElement(id, title, description) {
       <div class="task-status-row">
         <span class="status-label">Status:</span>
         <span class="task-status status-pending">Pending</span>
+        <span class="priority-badge priority-${escapeHtml(priority)}">${escapeHtml(priorityLabel)}</span>
       </div>
       <div class="task-meta-row">
         <span class="meta-item"><strong>Added:</strong> ${today}</span>
@@ -143,8 +148,9 @@ form.addEventListener('submit', function (event) {
   event.preventDefault();
   clearError();
 
-  const title = titleInput.value.trim();
-  const desc  = descInput.value.trim();
+  const title    = titleInput.value.trim();
+  const desc     = descInput.value.trim();
+  const priority = priorityInput.value;
 
   /* Blank-submission validation */
   if (title === '' && desc === '') {
@@ -162,9 +168,14 @@ form.addEventListener('submit', function (event) {
     descInput.focus();
     return;
   }
+  if (!priority) {
+    showError('Please select a priority level.');
+    priorityInput.focus();
+    return;
+  }
 
   /* Append the new task, update counter, reset form */
-  const newTask = createTaskElement(nextId++, title, desc);
+  const newTask = createTaskElement(nextId++, title, desc, priority);
   taskList.appendChild(newTask);
 
   refreshCount();

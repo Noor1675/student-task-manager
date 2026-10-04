@@ -52,6 +52,18 @@
           </div>
         </div>
 
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-priority">Priority <span class="required">*</span></label>
+            <select id="task-priority" name="task-priority" required>
+              <option value="" disabled selected>Select priority…</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+        </div>
+
         <div class="form-footer">
           <button type="submit" id="add-task-btn" class="btn btn-primary">+ Add Task</button>
           <p id="form-error" class="error-msg" role="alert" aria-live="polite"></p>
@@ -84,6 +96,7 @@
             <div class="task-status-row">
               <span class="status-label">Status:</span>
               <span class="task-status status-pending">Pending</span>
+              <span class="priority-badge priority-high">High</span>
             </div>
             <div class="task-meta-row">
               <span class="meta-item"><strong>Subject:</strong> DevOps Practical</span>
@@ -110,6 +123,7 @@
             <div class="task-status-row">
               <span class="status-label">Status:</span>
               <span class="task-status status-pending">Pending</span>
+              <span class="priority-badge priority-medium">Medium</span>
             </div>
             <div class="task-meta-row">
               <span class="meta-item"><strong>Subject:</strong> DevOps Theory</span>
@@ -136,6 +150,7 @@
             <div class="task-status-row">
               <span class="status-label">Status:</span>
               <span class="task-status status-pending">Pending</span>
+              <span class="priority-badge priority-low">Low</span>
             </div>
             <div class="task-meta-row">
               <span class="meta-item"><strong>Subject:</strong> Database Systems</span>
