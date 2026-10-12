@@ -1,0 +1,463 @@
+/* ================================================
+   Student Task Management System — style.css
+   Option C: Better spacing, improved cards, better form layout
+   ================================================ */
+
+/* ---------- Google Font ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  --clr-bg:          #f1f5f9;
+  --clr-surface:     #ffffff;
+  --clr-border:      #cbd5e1;
+  --clr-border-lt:   #e2e8f0;
+
+  --clr-primary:     #1d4ed8;
+  --clr-primary-h:   #1e40af;
+
+  --clr-danger:      #dc2626;
+  --clr-danger-lt:   #fef2f2;
+  --clr-danger-bd:   #fecaca;
+
+  --clr-text:        #0f172a;
+  --clr-text-sec:    #334155;
+  --clr-muted:       #64748b;
+  --clr-code:        #475569;
+
+  --status-pending-bg:     #fef3c7;
+  --status-pending-text:   #92400e;
+  --status-completed-bg:   #dcfce7;
+  --status-completed-text: #14532d;
+
+  /* Option C: spacing scale */
+  --space-xs:  0.4rem;
+  --space-sm:  0.75rem;
+  --space-md:  1.1rem;
+  --space-lg:  1.6rem;
+  --space-xl:  2rem;
+
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 10px rgba(0,0,0,0.09);
+  --transition: 0.18s ease;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ================================================================
+   HEADER
+   Option A: Clean, authoritative heading — no gradients, no gimmicks
+   ================================================================ */
+.site-header {
+  background-color: #1e3a8a;
+  border-bottom: 3px solid #1d4ed8;
+  padding: 1.6rem 1rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: clamp(1.25rem, 3.5vw, 1.9rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.25px;
+  line-height: 1.3;
+}
+
+.header-sub {
+  color: #bfdbfe;
+  font-size: 0.875rem;
+  margin-top: 0.4rem;
+  font-weight: 400;
+}
+
+/* ================================================================
+   LAYOUT
+   ================================================================ */
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: var(--space-xl) auto;
+  padding: 0 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ================================================================
+   CARD
+   Option C: Improved card — clear top border accent, generous padding
+   ================================================================ */
+.card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--clr-border-lt);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ================================================================
+   FORM
+   Option C: form-row for consistent spacing, cleaner footer
+   ================================================================ */
+.form-row {
+  margin-bottom: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-text-sec);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.required { color: var(--clr-danger); }
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  color: var(--clr-text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.6rem 0.85rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: #94a3b8; }
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  background: #ffffff;
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px rgba(29,78,216,0.1);
+}
+
+.form-group textarea { min-height: 85px; }
+
+/* ── Priority Badge ────────────────────────────────────── */
+.priority-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.priority-high   { background: #fee2e2; color: #991b1b; }
+.priority-medium { background: #fef3c7; color: #78350f; }
+.priority-low    { background: #dcfce7; color: #14532d; }
+
+/* Option C: form footer — button and error on the same row area */
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+/* ================================================================
+   BUTTON
+   ================================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.6rem 1.3rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.btn-primary {
+  background: var(--clr-primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--clr-primary-h);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ================================================================
+   ERROR MESSAGE
+   ================================================================ */
+.error-msg {
+  font-size: 0.82rem;
+  color: var(--clr-danger);
+  background: var(--clr-danger-lt);
+  border: 1px solid var(--clr-danger-bd);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.75rem;
+  display: none;
+}
+
+.error-msg:not(:empty) { display: block; }
+
+/* ================================================================
+   BADGE
+   ================================================================ */
+.badge {
+  background: var(--clr-primary);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ================================================================
+   TASK LIST
+   Option C: Better spacing between items
+   ================================================================ */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ================================================================
+   TASK ITEM
+   Option B + C: Richer card with header row, meta row, left accent
+   ================================================================ */
+.task-item {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border-lt);
+  border-left: 4px solid var(--clr-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-md);
+  transition: box-shadow var(--transition), border-left-color var(--transition);
+  animation: slideIn 0.22s ease;
+}
+
+.task-item:hover {
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--clr-primary-h);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-7px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.task-body { width: 100%; }
+
+/* Task header — title only (status moved to status-row below) */
+.task-header {
+  margin-bottom: var(--space-xs);
+}
+
+.task-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* Description */
+.task-desc {
+  font-size: 0.855rem;
+  color: var(--clr-muted);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+/* ── Status Row: "Status: Pending / Completed" ── */
+.task-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: var(--space-sm);
+}
+
+.status-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-text-sec);
+}
+
+/* ── Completed task — subtle visual dim ── */
+.task-item.task-completed {
+  border-left-color: var(--status-completed-dot, #16a34a);
+  opacity: 0.82;
+}
+
+.task-item.task-completed .task-title {
+  text-decoration: line-through;
+  color: var(--clr-muted);
+}
+
+.task-desc code {
+  font-family: 'Courier New', monospace;
+  background: #f1f5f9;
+  color: var(--clr-code);
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  border: 1px solid var(--clr-border-lt);
+}
+
+/* Meta row — subject, due date AND action button */
+.task-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--clr-border-lt);
+}
+
+/* Push button to the far right */
+.task-meta-row .toggle-status-btn {
+  margin-left: auto;
+}
+
+/* Mark Completed button — green outline */
+.btn-mark-done {
+  background: transparent;
+  color: #15803d;
+  border: 1.5px solid #16a34a;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.btn-mark-done:hover {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+/* Mark Pending button — amber outline */
+.btn-mark-pending {
+  background: transparent;
+  color: #92400e;
+  border: 1.5px solid #d97706;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.btn-mark-pending:hover {
+  background: #d97706;
+  color: #ffffff;
+}
+
+.meta-item {
+  font-size: 0.78rem;
+  color: var(--clr-muted);
+}
+
+.meta-item strong {
+  color: var(--clr-text-sec);
+  font-weight: 600;
+}
+
+/* ================================================================
+   STATUS BADGE
+   ================================================================ */
+.task-status {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-pending   { background: var(--status-pending-bg);   color: var(--status-pending-text); }
+.status-completed { background: var(--status-completed-bg);  color: var(--status-completed-text); }
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.78rem;
+  color: var(--clr-muted);
+  border-top: 1px solid var(--clr-border);
+  background: var(--clr-surface);
+  margin-top: auto;
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 540px) {
+  .task-header   { flex-direction: column; align-items: flex-start; }
+  .task-meta-row { gap: var(--space-sm); }
+  .card          { padding: 1.1rem; }
+}
