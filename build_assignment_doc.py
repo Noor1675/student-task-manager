@@ -77,44 +77,58 @@ def add_callout(doc, title, text, bg_hex="EFF6FF", border_hex="3B82F6"):
     doc.add_paragraph().paragraph_format.space_after = Pt(4)
 
 def add_screenshot(doc, img_name, caption, manual_instruction=""):
-    img_path = os.path.join(SCREENSHOTS_DIR, img_name)
-    if os.path.exists(img_path):
-        p_img = doc.add_paragraph()
-        p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_img.paragraph_format.space_before = Pt(6)
-        p_img.paragraph_format.space_after = Pt(4)
-        run_img = p_img.add_run()
-        run_img.add_picture(img_path, width=Inches(6.2))
-        
-        # Caption
-        p_cap = doc.add_paragraph()
-        p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_cap.paragraph_format.space_before = Pt(2)
-        p_cap.paragraph_format.space_after = Pt(6)
-        run_cap = p_cap.add_run(f"Figure: {caption}")
-        run_cap.font.name = "Segoe UI"
-        run_cap.font.size = Pt(9)
-        run_cap.font.italic = True
-        run_cap.font.color.rgb = COLOR_MUTED
+    table = doc.add_table(rows=1, cols=1)
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table.columns[0].width = Inches(6.5)
+    cell = table.cell(0, 0)
+    set_cell_background(cell, "F8FAFC")
+    set_cell_margins(cell, top=140, bottom=140, left=180, right=180)
+    
+    tcPr = cell._tc.get_or_add_tcPr()
+    borders = parse_xml(f'<w:tcBorders {nsdecls("w")}><w:top w:val="dashed" w:sz="16" w:space="0" w:color="94A3B8"/><w:left w:val="dashed" w:sz="16" w:space="0" w:color="94A3B8"/><w:bottom w:val="dashed" w:sz="16" w:space="0" w:color="94A3B8"/><w:right w:val="dashed" w:sz="16" w:space="0" w:color="94A3B8"/></w:tcBorders>')
+    tcPr.append(borders)
+    
+    p = cell.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_before = Pt(6)
+    p.paragraph_format.space_after = Pt(2)
+    
+    r_icon = p.add_run("📸 [SCREENSHOT PLACEHOLDER]\n")
+    r_icon.font.name = "Segoe UI"
+    r_icon.font.size = Pt(11)
+    r_icon.font.bold = True
+    r_icon.font.color.rgb = RGBColor(30, 58, 138)
+    
+    r_cap = p.add_run(f"Figure: {caption}\n")
+    r_cap.font.name = "Segoe UI"
+    r_cap.font.size = Pt(9.5)
+    r_cap.font.bold = True
+    r_cap.font.color.rgb = RGBColor(71, 85, 105)
     
     if manual_instruction:
-        table = doc.add_table(rows=1, cols=1)
-        table.alignment = WD_TABLE_ALIGNMENT.CENTER
-        table.columns[0].width = Inches(6.5)
-        cell = table.cell(0, 0)
-        set_cell_background(cell, "F9FAFB")
-        set_cell_margins(cell, top=100, bottom=100, left=150, right=150)
-        p = cell.paragraphs[0]
-        p.paragraph_format.space_before = Pt(2)
-        p.paragraph_format.space_after = Pt(2)
-        r_lbl = p.add_run("📸 How to take this screenshot yourself: ")
-        r_lbl.bold = True
-        r_lbl.font.size = Pt(9)
-        r_lbl.font.color.rgb = RGBColor(16, 185, 129)
-        r_txt = p.add_run(manual_instruction)
-        r_txt.font.size = Pt(8.5)
-        r_txt.font.color.rgb = COLOR_TEXT
-        doc.add_paragraph().paragraph_format.space_after = Pt(6)
+        p_inst = cell.add_paragraph()
+        p_inst.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        p_inst.paragraph_format.space_before = Pt(4)
+        p_inst.paragraph_format.space_after = Pt(4)
+        
+        r_step_lbl = p_inst.add_run("👉 Asli Screenshot Lene Ka Tareeqa:\n")
+        r_step_lbl.font.name = "Segoe UI"
+        r_step_lbl.font.size = Pt(9)
+        r_step_lbl.font.bold = True
+        r_step_lbl.font.color.rgb = RGBColor(13, 148, 136)
+        
+        r_step = p_inst.add_run(manual_instruction + "\n")
+        r_step.font.name = "Segoe UI"
+        r_step.font.size = Pt(8.5)
+        r_step.font.color.rgb = RGBColor(31, 41, 55)
+        
+        r_paste = p_inst.add_run("📋 Paste karne ke liye: Win + Shift + S dabakar snip karein -> Word mein yahan click karke Ctrl + V dabayein")
+        r_paste.font.name = "Segoe UI"
+        r_paste.font.size = Pt(8.5)
+        r_paste.font.italic = True
+        r_paste.font.color.rgb = RGBColor(100, 116, 139)
+        
+    doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
 def build_document():
     doc = docx.Document()
@@ -178,12 +192,12 @@ def build_document():
     meta_table.columns[1].width = Inches(4.3)
     
     meta_data = [
-        ("Student Name:", "Muhammad Shahzaib / Noor Akhtar"),
+        ("Student Name:", "Noor Akhtar"),
         ("Registration / Roll No:", "NUML-BSCS-2026 / [Your Roll Number]"),
         ("Course / Module:", "DevOps Practical & Continuous Integration / Deployment"),
         ("Project Name:", "Student Task Management System (student-task-manager)"),
         ("Date of Submission:", "October 12, 2026"),
-        ("Repository URL:", "https://github.com/MuhammadShahzaib7/student-task-manager.git")
+        ("Repository URL:", "https://github.com/Noor1675/student-task-manager.git")
     ]
     
     for idx, (label, val) in enumerate(meta_data):
@@ -321,7 +335,7 @@ def build_document():
         "A new empty GitHub repository named 'student-task-manager' was configured. The remote URL was linked to origin, "
         "and the main branch was pushed using credentials/Personal Access Token (PAT)."
     )
-    add_code_block(doc, "git remote add origin https://github.com/MuhammadShahzaib7/student-task-manager.git\ngit branch -M main\ngit push -u origin main")
+    add_code_block(doc, "git remote set-url origin https://github.com/Noor1675/student-task-manager.git\ngit branch -M main\ngit push -u origin main")
     
     add_screenshot(
         doc,
@@ -721,11 +735,22 @@ def build_document():
         "for automated Jenkins pipelines, Docker containerization, and cloud infrastructure deployment via Terraform."
     )
     
-    doc.save(DOCX_OUTPUT_PATH)
-    doc.save(DOCX_DESKTOP_COPY)
-    print("Report document successfully created at:")
-    print("1.", DOCX_OUTPUT_PATH)
-    print("2.", DOCX_DESKTOP_COPY)
+    output_files = [
+        r"c:\Users\numl-\Desktop\student-task-manager\student-task-manager\Student_Task_Manager_Assignment_Report_Placeholders.docx",
+        r"c:\Users\numl-\Desktop\student-task-manager\Student_Task_Manager_Assignment_Report_Placeholders.docx",
+        DOCX_OUTPUT_PATH,
+        DOCX_DESKTOP_COPY
+    ]
+    saved = []
+    for fpath in output_files:
+        try:
+            doc.save(fpath)
+            saved.append(fpath)
+        except PermissionError:
+            pass
+    print("Report documents successfully created at:")
+    for s in saved:
+        print(" ->", s)
 
 if __name__ == "__main__":
     build_document()
